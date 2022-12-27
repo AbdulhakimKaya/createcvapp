@@ -1,0 +1,147 @@
+{% extends 'user_form/base.html' %}
+
+{% block title %}
+    Users info
+{% endblock title %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg bg-light sticky-top navbar-menu" style="background-color: #f9dbbd !important;">
+        <div class="container-fluid">
+            <a class="navbar-brand navbar-item" href="#">CreateCV</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            {#            <div class="collapse navbar-collapse" id="navbarNav" style="color: white!important;">#}
+            {#                <ul class="navbar-nav" style="color: white!important;">#}
+            {#                    <li class="nav-item" style="color: white!important;">#}
+            {#                        <a class="nav-link active navbar-item" aria-current="page" href="#">Home</a>#}
+            {#                    </li>#}
+            {#                    <li class="nav-item">#}
+            {#                        <a class="nav-link navbar-item" href="#">Features</a>#}
+            {#                    </li>#}
+            {#                </ul>#}
+            {#            </div>#}
+        </div>
+    </nav>
+{% endblock navbar %}
+
+{% block content %}
+    <form method="POST" id="UserForm" data-cities-url="{% url 'ajax_load_cities' %}"
+          action="{% url 'deneme_url' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>
+            <button class="btn title-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">
+                Kişisel Bilgileriniz
+            </button>
+        </p>
+        <div class="collapse show" id="collapseExample">
+            <div class="card card-body form-body">
+                <input type="hidden" {{ user.id }}>
+                <div class="mb-4 col-md-3 text-start">
+                    <label for="formFile" class="form-label">Profil Fotoğrafı</label>
+                    {{ form.profile_img }}
+                </div>
+                <div class="row text-start">
+                    <div class="col mb-4">
+                        <label for="" class="form-label">İsim</label>
+                        {{ form.first_name }}
+                    </div>
+                    <div class="col mb-4">
+                        <label for="" class="form-label">Soyisim</label>
+                        {{ form.last_name }}
+                    </div>
+                </div>
+                <div class="row text-start">
+                    <div class="col mb-4">
+                        <label for="" class="form-label">Doğum Günü</label>
+                        {{ form.birth_day }}
+                    </div>
+                    <div class="mb-4 col">
+                        <label for="" class="form-label">Cinsiyet</label>
+                        {{ form.gender }}
+                    </div>
+                </div>
+                <div class="row text-start">
+                    <div class="mb-4 col">
+                        <label for="" class="form-label">Medeni Durum</label>
+                        {{ form.marital_status }}
+                    </div>
+                    <div class="mb-4 col">
+                        <label for="" class="form-label">Askerlik Durum</label>
+                        {{ form.military_status }}
+                    </div>
+                    <div class="mb-4 col">
+                        <label for="" class="form-label mobile-align-driving-license">Ehliyet Bilgisi</label>
+                        {{ form.driving_license }}
+                    </div>
+                </div>
+                <div class="row text-start">
+                    <div class="mb-4 col">
+                        <label for="" class="form-label mobile-align-email">Email</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="mb-4 col">
+                        <label for="" class="form-label">Telefon Numarası</label>
+                        {{ form.phone_number }}
+                    </div>
+                </div>
+                <div class="row text-start">
+                    <div class="mb-4 col">
+                        <label for="" class="form-label">İl</label>
+                        {{ form.city_living }}
+                    </div>
+                    <div class="mb-4 col">
+                        <label for="" class="form-label">İlçe</label>
+                        {{ form.district_living }}
+                    </div>
+                </div>
+                <div class="form-floating mb-4">
+                    {{ form.address }}
+                    <label class="ms-4" for="">Adres</label>
+                </div>
+                <div class="row text-start">
+{#                    <div class="form-floating mb-4 col">#}
+{#                        {{ form.profile }}#}
+{#                        <label class="ms-4" for="">Kısaca kendinizden bahseder misiniz?</label>#}
+{#                    </div>#}
+                    <div class="form-floating mb-4 col">
+                        {{ form.hobby }}
+                        <label class="ms-4" for="">Hobileriniz</label>
+                    </div>
+                </div>
+
+                {{ work_experience_form }}
+                {{ education_form }}
+                {{ reference_form }}
+                {{ course_form }}
+
+            </div>
+        </div>
+
+        <p>
+            <button class="btn title-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseExample1"
+                    aria-expanded="false" aria-controls="collapseExample1">
+                İş Deneyiminiz
+            </button>
+        </p>
+{#        <div class="collapse show" id="collapseExample1">#}
+{#            <div class="card card-body form-body">#}
+{#                <div class="row text-start">#}
+{#                    <div class="col mb-4">#}
+{#                        <label for="" class="form-label">İsim</label>#}
+{#                        {{ form.experience__work_experience__job_tile }}#}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{##}
+{#            </div>#}
+{#        </div>#}
+        <button href="#" type="submit"
+                class="btn col-md-3 align-self-center submit-button mt-4">Kaydet
+        </button>
+    </form>
+{% endblock content %}

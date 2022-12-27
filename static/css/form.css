@@ -1,0 +1,97 @@
+.navbar-menu {
+    opacity: 0.9;
+}
+
+.navbar-item {
+    color: #312d39;
+    font-weight: 500;
+}
+
+.title-button {
+    width: 100%;
+    height: 50px;
+    background: -webkit-linear-gradient(left, #312d39, #574f5e);
+    color: white;
+    font-weight: 500;
+    font-size: 24px;
+    border-radius: 100px;
+}
+
+.title-button:hover {
+    color: #f9dbbd;
+}
+
+.form-body {
+    background: -webkit-linear-gradient(left, #f9dbbd, #ffa5ab);
+    border-radius: 25px;
+}
+
+label {
+    font-weight: 500;
+    color: #312d39;
+    margin-left: 10px;
+}
+
+input {
+    border-radius: 100px !important;
+}
+
+input::file-selector-button {
+    color: white !important;
+    background-color: #312d39 !important;
+}
+
+input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: 1.5px solid #574f5e !important;
+}
+
+select {
+    border-radius: 100px !important;
+}
+
+select::file-selector-button {
+    color: white !important;
+    background-color: #312d39 !important;
+}
+
+select:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: 1.5px solid #574f5e !important;
+}
+
+textarea {
+    border-radius: 100px !important;
+    overflow: hidden;
+}
+
+textarea:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: 1.5px solid #574f5e !important;
+}
+
+@media screen and (max-width: 459px) {
+    .mobile-align-email {
+        margin-top: 26px;
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 531px) {
+    .mobile-align-driving-license {
+        margin-top: 26px;
+    }
+}
+
+.submit-button {
+    background: -webkit-linear-gradient(left, #312d39, #574f5e);
+    color: white;
+    font-weight: 500;
+    border-radius: 100px;
+}
+
+.submit-button:hover {
+    color: #f9dbbd;
+}
