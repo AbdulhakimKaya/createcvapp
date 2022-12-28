@@ -1,0 +1,53 @@
+@media screen and (max-width: 459px) {
+    .mobile-align-email {
+        margin-top: 26px;
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 531px) {
+    .mobile-align-driving-license {
+        margin-top: 26px;
+    }
+}
+
+@media screen and (max-width: 420px){
+    .mobile-align-gender {
+        margin-top: 26px;
+    }
+}
+
+@media screen and (max-width: 503px){
+    .mobile-align-job-title {
+        margin-top: 26px;
+    }
+}
+
+@media screen and (max-width: 457px) and (min-width: 384px){
+    .mobile-align-end-date {
+        margin-top: 26px;
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 333px){
+    .mobile-align-department {
+        margin-top: 26px;
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 432px){
+    .mobile-align-degree {
+        margin-top: 26px;
+    }
+}
+
+@media screen and (max-width: 380px) and (min-width: 337px){
+    .mobile-align-course {
+        margin-top: 26px;
+    }
+}
+
+@media screen and (max-width: 486px) and (min-width: 380px){
+    .mobile-align-reference {
+        margin-top: 26px;
+    }
+}

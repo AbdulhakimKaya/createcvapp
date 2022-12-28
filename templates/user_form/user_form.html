@@ -7,7 +7,7 @@
 {% block navbar %}
     <nav class="navbar navbar-expand-lg bg-light sticky-top navbar-menu" style="background-color: #f9dbbd !important;">
         <div class="container-fluid">
-            <a class="navbar-brand navbar-item" href="#">CreateCV</a>
+            <a class="navbar-brand navbar-item navbar-brand-font" href="#">CreateCV</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -60,7 +60,7 @@
                         {{ form.birth_day }}
                     </div>
                     <div class="mb-4 col">
-                        <label for="" class="form-label">Cinsiyet</label>
+                        <label for="" class="form-label mobile-align-gender">Cinsiyet</label>
                         {{ form.gender }}
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                         {{ form.military_status }}
                     </div>
                     <div class="mb-4 col">
-                        <label for="" class="form-label mobile-align-driving-license">Ehliyet Bilgisi</label>
+                        <label for="" class="form-label">Ehliyet Bilgisi</label>
                         {{ form.driving_license }}
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                 <div class="row text-start">
                     <div class="form-floating mb-4 col">
                         {{ form.profile }}
-                        <label class="ms-4" for="">Kısaca kendinizden bahseder misiniz?</label>
+                        <label class="ms-4" for="">Özgeçmiş</label>
                     </div>
                     <div class="form-floating mb-4 col">
                         {{ form.hobby }}
@@ -126,7 +126,7 @@
             <div class="card card-body form-body">
                 <div class="row text-start">
                     <div class="col mb-4">
-                        <label for="" class="form-label">Pozisyonunuz</label>
+                        <label for="" class="form-label mobile-align-job-title">Pozisyonunuz</label>
                         {{ work_experience_form.job_title_we }}
                     </div>
                     <div class="col mb-4">
@@ -140,7 +140,7 @@
                         {{ work_experience_form.start_date_we }}
                     </div>
                     <div class="mb-4 col">
-                        <label for="" class="form-label">Bitiş Tarihi</label>
+                        <label for="" class="form-label mobile-align-end-date">Bitiş Tarihi</label>
                         {{ work_experience_form.end_date_we }}
                     </div>
                 </div>
@@ -177,11 +177,11 @@
                         {{ education_form.school_name }}
                     </div>
                     <div class="col mb-4">
-                        <label for="" class="form-label">Bölüm</label>
+                        <label for="" class="form-label mobile-align-department">Bölüm</label>
                         {{ education_form.department_name }}
                     </div>
                     <div class="col mb-4">
-                        <label for="" class="form-label">Derece</label>
+                        <label for="" class="form-label mobile-align-degree">Derece</label>
                         {{ education_form.degree_name }}
                     </div>
                 </div>
@@ -191,7 +191,7 @@
                         {{ education_form.start_date_education }}
                     </div>
                     <div class="mb-4 col">
-                        <label for="" class="form-label">Bitiş Tarihi</label>
+                        <label for="" class="form-label mobile-align-end-date">Bitiş Tarihi</label>
                         {{ education_form.end_date_education }}
                     </div>
                 </div>
@@ -224,7 +224,7 @@
             <div class="card card-body form-body">
                 <div class="row text-start">
                     <div class="col mb-4">
-                        <label for="" class="form-label">Kurs Adı</label>
+                        <label for="" class="form-label mobile-align-course">Kurs Adı</label>
                         {{ course_form.course_name }}
                     </div>
                     <div class="col mb-4">
@@ -238,7 +238,7 @@
                         {{ course_form.start_date_course }}
                     </div>
                     <div class="mb-4 col">
-                        <label for="" class="form-label">Bitiş Tarihi</label>
+                        <label for="" class="form-label mobile-align-end-date">Bitiş Tarihi</label>
                         {{ course_form.end_date_course }}
                     </div>
                 </div>
@@ -265,11 +265,11 @@
                         {{ reference_form.company_name_reference }}
                     </div>
                     <div class="col mb-4">
-                        <label for="" class="form-label">İsim</label>
+                        <label for="" class="form-label mobile-align-reference">İsim</label>
                         {{ reference_form.first_name_reference }}
                     </div>
                     <div class="col mb-4">
-                        <label for="" class="form-label">Soyisim</label>
+                        <label for="" class="form-label mobile-align-reference">Soyisim</label>
                         {{ reference_form.last_name_reference }}
                     </div>
                 </div>
@@ -287,7 +287,7 @@
         </div>
 
         <button href="#" type="submit"
-                class="btn col-md-3 align-self-center submit-button mt-4">Kaydet
+                class="btn col-md-3 align-self-center submit-button mt-5">Kaydet ve CV indir
         </button>
     </form>
 {% endblock content %}

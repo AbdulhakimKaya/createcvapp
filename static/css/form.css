@@ -2,12 +2,18 @@
     opacity: 0.9;
 }
 
+.navbar-brand-font {
+    font-family: 'Pacifico';
+    font-size: 40px;
+}
+
 .navbar-item {
     color: #312d39;
     font-weight: 500;
 }
 
 .title-button {
+    font-family: 'Georgia';
     width: 100%;
     height: 50px;
     background: -webkit-linear-gradient(left, #312d39, #574f5e);
@@ -27,7 +33,8 @@
 }
 
 label {
-    font-weight: 500;
+    font-family: 'Georgia';
+    font-weight: bold;
     color: #312d39;
     margin-left: 10px;
 }
@@ -71,18 +78,6 @@ textarea:focus {
     outline: none !important;
     box-shadow: none !important;
     border: 1.5px solid #574f5e !important;
-}
-
-@media screen and (max-width: 459px) {
-    .mobile-align-email {
-        margin-top: 26px;
-    }
-}
-
-@media screen and (max-width: 767px) and (min-width: 531px) {
-    .mobile-align-driving-license {
-        margin-top: 26px;
-    }
 }
 
 .submit-button {

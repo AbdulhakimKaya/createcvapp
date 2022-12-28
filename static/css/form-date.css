@@ -1,0 +1,75 @@
+@media screen and (min-width: 767px) {
+
+    select[name="birth_day_day"] {
+        width: 33%;
+        margin-top: -38px;
+    }
+
+    select[name="birth_day_month"] {
+        width: 33%;
+        margin-left: 33%;
+    }
+
+    select[name="birth_day_year"] {
+        width: 33%;
+        margin-top: -38px;
+        margin-left: 66%;
+    }
+
+    select[name="start_date_we_day"],
+    select[name="end_date_we_day"] {
+        width: 33%;
+        margin-top: -38px;
+    }
+
+    select[name="start_date_we_month"],
+    select[name="end_date_we_month"] {
+        width: 33%;
+        margin-left: 33%;
+    }
+
+    select[name="start_date_we_year"],
+    select[name="end_date_we_year"] {
+        width: 33%;
+        margin-top: -38px;
+        margin-left: 66%;
+    }
+
+    select[name="start_date_education_day"],
+    select[name="end_date_education_day"] {
+        width: 33%;
+        margin-top: -38px;
+    }
+
+    select[name="start_date_education_month"],
+    select[name="end_date_education_month"] {
+        width: 33%;
+        margin-left: 33%;
+    }
+
+    select[name="start_date_education_year"],
+    select[name="end_date_education_year"] {
+        width: 33%;
+        margin-top: -38px;
+        margin-left: 66%;
+    }
+
+    select[name="start_date_course_day"],
+    select[name="end_date_course_day"] {
+        width: 33%;
+        margin-top: -38px;
+    }
+
+    select[name="start_date_course_month"],
+    select[name="end_date_course_month"] {
+        width: 33%;
+        margin-left: 33%;
+    }
+
+    select[name="start_date_course_year"],
+    select[name="end_date_course_year"] {
+        width: 33%;
+        margin-top: -38px;
+        margin-left: 66%;
+    }
+}

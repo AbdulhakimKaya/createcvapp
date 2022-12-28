@@ -1,7 +1,7 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -9,27 +9,34 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form-date.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form-mobile.css' %}">
+
+    <!-- FONTS -->
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
 
     <title>
         {% block title %}
         {% endblock title %}
     </title>
-  </head>
-  <body style="font-size: 18px;">
+</head>
+<body style="font-size: 18px;">
 
-    {% block navbar %}
-    {% endblock navbar %}
+{% block navbar %}
+{% endblock navbar %}
 
-    <div style="padding: 3rem;" class="container text-center">
-        {% block content %}
-        {% endblock content %}
-    </div>
+<div style="padding: 3rem;" class="container text-center">
+    {% block content %}
+    {% endblock content %}
+</div>
 
-    <script defer src="{% static 'js/bootstrap.min.js' %}"></script>
+<script defer src="{% static 'js/bootstrap.min.js' %}"></script>
 
 
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
     $("#id_city").change(function () {
         const url = $("#UserForm").attr("data-cities-url");  // get the url of the `load_cities` view
@@ -47,5 +54,5 @@
 
     });
 </script>
-  </body>
+</body>
 </html>
