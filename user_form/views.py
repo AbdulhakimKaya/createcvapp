@@ -1,7 +1,13 @@
 from django.shortcuts import render
-from user_form.forms import UserForms, WorkExperienceForm, EducationForm, ReferenceForm, CourseForm
+from user_form.forms import UserForms, WorkExperienceForm, EducationForm, ReferenceForm, CourseForm, DenemeForm
 from user_form.models import UserForm, District, Experience
 
+
+def index(request):
+    return render(request, 'user_form/home.html')
+
+def about(request):
+    return render(request, 'user_form/about.html')
 
 def create_user_form(request):
     form = UserForms
@@ -45,3 +51,18 @@ def load_districts(request):
     districts = District.objects.filter(city_id=city_id).all()
     return render(request, 'user_form/district_dropdown_list_options.html', {'districts': districts})
 
+
+
+def example(request):
+    context = dict()
+    form = DenemeForm
+
+    if request.method == 'POST':
+        form = DenemeForm(request.POST)
+        if form.is_valid():
+            print("valid e girdi")
+
+        print(form.errors)
+
+    context['form'] = form
+    return render(request, 'example.html', context= context)

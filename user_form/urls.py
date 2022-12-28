@@ -6,7 +6,10 @@ from django.urls import path
 from user_form import views
 
 urlpatterns = [
-    path('', views.create_user_form, name="deneme_url"),
+    path('', views.index, name="home"),
+    path('example/', views.example, name="example"),
+    path('about/', views.about, name="about"),
+    path('user-form/', views.create_user_form, name="user-form"),
     path('user_form/ajax/load-cities/', views.load_districts, name='ajax_load_cities'),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
