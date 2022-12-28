@@ -1,0 +1,15 @@
+.navbar-menu {
+    opacity: 0.9;
+}
+
+.navbar-brand-font {
+    font-family: 'Pacifico';
+    font-size: 40px;
+}
+
+.navbar-item {
+    color: #312d39;
+    font-size: 24px;
+    font-weight: bold;
+    column-gap: 100px;
+}
