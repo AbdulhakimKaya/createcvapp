@@ -14,9 +14,14 @@
     <link rel="stylesheet" href="{% static 'css/form.css' %}">
     <link rel="stylesheet" href="{% static 'css/form-date.css' %}">
     <link rel="stylesheet" href="{% static 'css/form-mobile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
 
     <!-- FONTS -->
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Georgia' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Dancing Script' rel='stylesheet'>
 
     <title>
         {% block title %}
@@ -26,33 +31,16 @@
 <body style="font-size: 18px;">
 
 {% block navbar %}
+    {% include 'user_form/navbar.html' %}
 {% endblock navbar %}
 
-<div style="padding: 3rem;" class="container text-center">
-    {% block content %}
-    {% endblock content %}
-</div>
+{% block content %}
+{% endblock content %}
 
 <script defer src="{% static 'js/bootstrap.min.js' %}"></script>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>
-    $("#id_city").change(function () {
-        const url = $("#UserForm").attr("data-cities-url");  // get the url of the `load_cities` view
-        const cityId = $(this).val();  // get the selected country ID from the HTML input
-
-        $.ajax({ // initialize an AJAX request
-            url: url, // set the url of the request (= /members/ajax/load-cities/ )
-            data: {
-                'city_id': cityId  // GET parameters
-            },
-            success: function (data) {
-                $("#id_district").html(data);
-            }
-        });
-
-    });
-</script>
+<script src="{% static 'js/city.js' %}"></script>
 </body>
 </html>
