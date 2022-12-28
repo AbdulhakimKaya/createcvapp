@@ -56,6 +56,9 @@ class WorkExperience(models.Model):
     start_date_we = models.DateField(null=True, blank=True)
     end_date_we = models.DateField(null=True, blank=True)
 
+    def __str__(self):
+        return str(self.job_title_we)
+
 
 class Course(models.Model):
     course_name = models.CharField(max_length=255, null=True, blank=True)
@@ -63,6 +66,9 @@ class Course(models.Model):
     description_course = models.TextField(max_length=800, null=True, blank=True)
     start_date_course = models.DateField(null=True, blank=True)
     end_date_course = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return str(self.course_name)
 
 
 class Education(models.Model):
@@ -75,6 +81,9 @@ class Education(models.Model):
     start_date_education = models.DateField(null=True, blank=True)
     end_date_education = models.DateField(null=True, blank=True)
 
+    def __str__(self):
+        return str(self.school_name)
+
 
 class Reference(models.Model):
     company_name_reference = models.CharField(max_length=255, null=True, blank=True)
@@ -83,12 +92,18 @@ class Reference(models.Model):
     email_reference = models.CharField(max_length=255, null=True, blank=True)
     phone_number_reference = models.CharField(max_length=15, null=True, blank=True)
 
+    def __str__(self):
+        return str(self.company_name_reference)
+
 
 class Experience(models.Model):
     work_experience = models.ForeignKey(WorkExperience, null=True, blank=True, on_delete=models.SET_NULL)
     education = models.ForeignKey(Education, null=True, blank=True, on_delete=models.SET_NULL)
     reference = models.ForeignKey(Reference, null=True, blank=True, on_delete=models.SET_NULL)
     course = models.ForeignKey(Course, null=True, blank=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return "Experience " + str(self.id)
 
 
 class UserForm(models.Model):
