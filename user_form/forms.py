@@ -130,3 +130,15 @@ class UserForms(forms.ModelForm):
         if commit:
             instance.save()
         return instance
+
+
+class ExampleForm(forms.ModelForm):
+    first_name = forms.CharField(max_length=255, required=True)
+    class Meta:
+        model = UserForm
+        fields = ['first_name', 'phone_number', 'email']
+
+    def clean_email(self):
+        print(self.data['email'])
+
+

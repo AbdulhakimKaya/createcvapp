@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from user_form.forms import UserForms, WorkExperienceForm, EducationForm, ReferenceForm, CourseForm, DenemeForm
+from user_form.forms import UserForms, WorkExperienceForm, EducationForm, ReferenceForm, CourseForm, ExampleForm
 from user_form.models import UserForm, District, Experience
 
 
@@ -55,10 +55,10 @@ def load_districts(request):
 
 def example(request):
     context = dict()
-    form = DenemeForm
+    form = ExampleForm
 
     if request.method == 'POST':
-        form = DenemeForm(request.POST)
+        form = ExampleForm(request.POST)
         if form.is_valid():
             print("valid e girdi")
 
