@@ -106,6 +106,22 @@ class Experience(models.Model):
         return "Experience " + str(self.id)
 
 
+class Language(models.Model):
+    language_name = models.CharField(max_length=255, null=True, blank=True)
+    level = models.CharField(max_length=255, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.language_name)
+
+
+class Ability(models.Model):
+    ability_name = models.CharField(max_length=255, null=True, blank=True)
+    level = models.CharField(max_length=255, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.ability_name)
+
+
 class UserForm(models.Model):
     experience = models.ForeignKey(Experience, null=True, blank=True, on_delete=models.SET_NULL)
     city_living = models.ForeignKey(City, null=True, blank=True, on_delete=models.SET_NULL)
@@ -114,6 +130,8 @@ class UserForm(models.Model):
     marital_status = models.ForeignKey(MaritalStatus, null=True, blank=True, on_delete=models.SET_NULL)
     military_status = models.ForeignKey(MilitaryStatus, null=True, blank=True, on_delete=models.SET_NULL)
     driving_license = models.ForeignKey(DrivingLicense, null=True, blank=True, on_delete=models.SET_NULL)
+    languages = models.ManyToManyField(Language, blank=True)
+    abilities = models.ManyToManyField(Ability, blank=True)
     first_name = models.CharField(max_length=255, null=True, blank=True)
     last_name = models.CharField(max_length=255, null=True, blank=True)
     birth_day = models.DateField(null=True, blank=True)
