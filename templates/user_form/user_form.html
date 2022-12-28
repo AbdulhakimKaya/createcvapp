@@ -1,34 +1,13 @@
-{% extends 'user_form/base.html' %}
+{% extends 'user_form/index.html' %}
 
 {% block title %}
-    Users info
+    Create CV
 {% endblock title %}
 
-{% block navbar %}
-    <nav class="navbar navbar-expand-lg bg-light sticky-top navbar-menu" style="background-color: #f9dbbd !important;">
-        <div class="container-fluid">
-            <a class="navbar-brand navbar-item navbar-brand-font" href="#">CreateCV</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            {#            <div class="collapse navbar-collapse" id="navbarNav" style="color: white!important;">#}
-            {#                <ul class="navbar-nav" style="color: white!important;">#}
-            {#                    <li class="nav-item" style="color: white!important;">#}
-            {#                        <a class="nav-link active navbar-item" aria-current="page" href="#">Home</a>#}
-            {#                    </li>#}
-            {#                    <li class="nav-item">#}
-            {#                        <a class="nav-link navbar-item" href="#">Features</a>#}
-            {#                    </li>#}
-            {#                </ul>#}
-            {#            </div>#}
-        </div>
-    </nav>
-{% endblock navbar %}
-
 {% block content %}
+    <div class="container text-center p-5">
     <form method="POST" id="UserForm" data-cities-url="{% url 'ajax_load_cities' %}"
-          action="{% url 'deneme_url' %}" enctype="multipart/form-data">
+          action="{% url 'user-form' %}" enctype="multipart/form-data">
         {% csrf_token %}
         <p>
             <button class="btn title-button" type="button" data-bs-toggle="collapse"
@@ -290,4 +269,5 @@
                 class="btn col-md-3 align-self-center submit-button mt-5">Kaydet ve CV indir
         </button>
     </form>
+</div>
 {% endblock content %}
