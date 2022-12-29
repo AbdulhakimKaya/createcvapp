@@ -23,28 +23,28 @@ class Gender(models.Model):
     type_gender = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
-        return str(self.type)
+        return str(self.type_gender)
 
 
 class MaritalStatus(models.Model):
     status_marital = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
-        return str(self.status)
+        return str(self.status_marital)
 
 
 class MilitaryStatus(models.Model):
     status_military = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
-        return str(self.status)
+        return str(self.status_military)
 
 
 class DrivingLicense(models.Model):
     type_driving_license = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
-        return str(self.type)
+        return str(self.type_driving_license)
 
 
 class WorkExperience(models.Model):
@@ -106,17 +106,31 @@ class Experience(models.Model):
         return "Experience " + str(self.id)
 
 
+class LanguageLevel(models.Model):
+    level_name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return str(self.level_name)
+
+
 class Language(models.Model):
     language_name = models.CharField(max_length=255, null=True, blank=True)
-    level = models.CharField(max_length=255, null=True, blank=True)
+    levels = models.ManyToManyField(LanguageLevel, blank=True)
 
     def __str__(self):
         return str(self.language_name)
 
 
+class AbilityLevel(models.Model):
+    level_name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return str(self.level_name)
+
+
 class Ability(models.Model):
     ability_name = models.CharField(max_length=255, null=True, blank=True)
-    level = models.CharField(max_length=255, null=True, blank=True)
+    levels = models.ManyToManyField(AbilityLevel)
 
     def __str__(self):
         return str(self.ability_name)
