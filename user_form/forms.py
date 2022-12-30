@@ -1,5 +1,6 @@
 from django import forms
-from .models import UserForm, District, WorkExperience, Education, Reference, Course
+from .models import UserForm, District, WorkExperience, Education, Reference, Course, Language, Ability, LanguageLevel, \
+    AbilityLevel
 
 
 class WorkExperienceForm(forms.ModelForm):
@@ -86,9 +87,33 @@ class CourseForm(forms.ModelForm):
         }
 
 
+class LanguageForm(forms.ModelForm):
+    class Meta:
+        model = Language
+        fields = "__all__"
+        widgets = {
+            'language_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'level': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+
+
+class AbilityForm(forms.ModelForm):
+    class Meta:
+        model = Ability
+        fields = "__all__"
+        widgets = {
+            'ability_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'level': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+
 class UserForms(forms.ModelForm):
-    # job_title = forms.CharField(max_length=100)
-    # company_name = forms.CharField(max_length=100)
+    # languages = forms.ModelMultipleChoiceField(queryset=Language.objects.all(), widget=forms.Select(attrs={'class': 'form-select'}))
+    # lang_levels = forms.ModelMultipleChoiceField(queryset=LanguageLevel.objects.all(), widget=forms.Select(attrs={'class': 'form-select'}))
+    # abilities = forms.ModelMultipleChoiceField(queryset=Ability.objects.all(), widget=forms.Select(attrs={'class': 'form-select'}))
+    # abilitiy_levels = forms.ModelMultipleChoiceField(queryset=AbilityLevel.objects.all(), widget=forms.Select(attrs={'class': 'form-select'}))
+
     class Meta:
         model = UserForm
         fields = '__all__'

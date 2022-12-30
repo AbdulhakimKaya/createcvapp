@@ -3,271 +3,328 @@
 {% block title %}
     Create CV
 {% endblock title %}
-
+{% block navbar %}
+    {% include 'user_form/navbar.html' %}
+{% endblock navbar %}
 {% block content %}
     <div class="container text-center p-5">
-    <form method="POST" id="UserForm" data-cities-url="{% url 'ajax_load_cities' %}"
-          action="{% url 'user-form' %}" enctype="multipart/form-data">
-        {% csrf_token %}
-        <p>
-            <button class="btn title-button" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseExample"
-                    aria-expanded="false" aria-controls="collapseExample">
-                Kişisel Bilgileriniz
-            </button>
-        </p>
-        <div class="collapse show" id="collapseExample">
-            <div class="card card-body form-body">
-                <input type="hidden" {{ user.id }}>
-                <div class="mb-4 col-md-3 text-start">
-                    <label for="formFile" class="form-label">Profil Fotoğrafı</label>
-                    {{ form.profile_img }}
-                </div>
-                <div class="row text-start">
-                    <div class="col mb-4">
-                        <label for="" class="form-label">İsim</label>
-                        {{ form.first_name }}
+        <form method="POST" id="UserForm"
+              action="{% url 'user-form' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>
+                <button class="btn title-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample"
+                        aria-expanded="false" aria-controls="collapseExample">
+                    Kişisel Bilgileriniz
+                </button>
+            </p>
+            <div class="collapse show" id="collapseExample">
+                <div class="card card-body form-body">
+                    <input type="hidden" id="city_id" value="{% url 'ajax_load_cities' %}">
+                    <div class="mb-4 col-md-3 text-start">
+                        <label for="formFile" class="form-label">Profil Fotoğrafı</label>
+                        {{ form.profile_img }}
                     </div>
-                    <div class="col mb-4">
-                        <label for="" class="form-label">Soyisim</label>
-                        {{ form.last_name }}
+                    <div class="row text-start">
+                        <div class="col mb-4">
+                            <label for="" class="form-label">İsim</label>
+                            {{ form.first_name }}
+                        </div>
+                        <div class="col mb-4">
+                            <label for="" class="form-label">Soyisim</label>
+                            {{ form.last_name }}
+                        </div>
                     </div>
-                </div>
-                <div class="row text-start">
-                    <div class="col mb-4">
-                        <label for="" class="form-label">Doğum Günü</label>
-                        {{ form.birth_day }}
+                    <div class="row text-start">
+                        <div class="col mb-4">
+                            <label for="" class="form-label">Doğum Günü</label>
+                            {{ form.birth_day }}
+                        </div>
+                        <div class="mb-4 col">
+                            <label for="" class="form-label mobile-align-gender">Cinsiyet</label>
+                            {{ form.gender }}
+                        </div>
                     </div>
-                    <div class="mb-4 col">
-                        <label for="" class="form-label mobile-align-gender">Cinsiyet</label>
-                        {{ form.gender }}
+                    <div class="row text-start">
+                        <div class="mb-4 col">
+                            <label for="" class="form-label">Medeni Durum</label>
+                            {{ form.marital_status }}
+                        </div>
+                        <div class="mb-4 col">
+                            <label for="" class="form-label">Askerlik Durum</label>
+                            {{ form.military_status }}
+                        </div>
+                        <div class="mb-4 col">
+                            <label for="" class="form-label">Ehliyet Bilgisi</label>
+                            {{ form.driving_license }}
+                        </div>
                     </div>
-                </div>
-                <div class="row text-start">
-                    <div class="mb-4 col">
-                        <label for="" class="form-label">Medeni Durum</label>
-                        {{ form.marital_status }}
+                    <div class="row text-start">
+                        <div class="mb-4 col">
+                            <label for="" class="form-label mobile-align-email">Email</label>
+                            {{ form.email }}
+                        </div>
+                        <div class="mb-4 col">
+                            <label for="" class="form-label">Telefon Numarası</label>
+                            {{ form.phone_number }}
+                        </div>
                     </div>
-                    <div class="mb-4 col">
-                        <label for="" class="form-label">Askerlik Durum</label>
-                        {{ form.military_status }}
+                    <div class="row text-start">
+                        <div class="mb-4 col">
+                            <label for="" class="form-label">İl</label>
+                            {{ form.city_living }}
+
+                        </div>
+                        <div class="mb-4 col" id="id_district">
+                            <label for="" class="form-label">İlçe</label>
+                            {{ form.district_living }}
+                        </div>
                     </div>
-                    <div class="mb-4 col">
-                        <label for="" class="form-label">Ehliyet Bilgisi</label>
-                        {{ form.driving_license }}
+                    <div class="form-floating mb-4">
+                        {{ form.address }}
+                        <label class="ms-4" for="">Adres</label>
                     </div>
-                </div>
-                <div class="row text-start">
-                    <div class="mb-4 col">
-                        <label for="" class="form-label mobile-align-email">Email</label>
-                        {{ form.email }}
-                    </div>
-                    <div class="mb-4 col">
-                        <label for="" class="form-label">Telefon Numarası</label>
-                        {{ form.phone_number }}
-                    </div>
-                </div>
-                <div class="row text-start">
-                    <div class="mb-4 col">
-                        <label for="" class="form-label">İl</label>
-                        {{ form.city_living }}
-                    </div>
-                    <div class="mb-4 col">
-                        <label for="" class="form-label">İlçe</label>
-                        {{ form.district_living }}
-                    </div>
-                </div>
-                <div class="form-floating mb-4">
-                    {{ form.address }}
-                    <label class="ms-4" for="">Adres</label>
-                </div>
-                <div class="row text-start">
-                    <div class="form-floating mb-4 col">
-                        {{ form.profile }}
-                        <label class="ms-4" for="">Özgeçmiş</label>
-                    </div>
-                    <div class="form-floating mb-4 col">
-                        {{ form.hobby }}
-                        <label class="ms-4" for="">Hobileriniz</label>
+                    <div class="row text-start">
+                        <div class="form-floating mb-4 col">
+                            {{ form.profile }}
+                            <label class="ms-4" for="">Özgeçmiş</label>
+                        </div>
+                        <div class="form-floating mb-4 col">
+                            {{ form.hobby }}
+                            <label class="ms-4" for="">Hobileriniz</label>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <p>
-            <button class="btn title-button mt-5" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseExample1"
-                    aria-expanded="false" aria-controls="collapseExample1">
-                İş Deneyiminiz
-            </button>
-        </p>
-        <div class="collapse" id="collapseExample1">
-            <div class="card card-body form-body">
-                <div class="row text-start">
-                    <div class="col mb-4">
-                        <label for="" class="form-label mobile-align-job-title">Pozisyonunuz</label>
-                        {{ work_experience_form.job_title_we }}
+            <p>
+                <button class="btn title-button mt-5" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample1"
+                        aria-expanded="false" aria-controls="collapseExample1">
+                    İş Deneyiminiz
+                </button>
+            </p>
+            <div class="collapse" id="collapseExample1">
+                <div class="card card-body form-body">
+                    <div class="row text-start">
+                        <div class="col mb-4">
+                            <label for="" class="form-label mobile-align-job-title">Pozisyonunuz</label>
+                            {{ work_experience_form.job_title_we }}
+                        </div>
+                        <div class="col mb-4">
+                            <label for="" class="form-label">Çalıştığınız Şirket</label>
+                            {{ work_experience_form.company_name_we }}
+                        </div>
                     </div>
-                    <div class="col mb-4">
-                        <label for="" class="form-label">Çalıştığınız Şirket</label>
-                        {{ work_experience_form.company_name_we }}
+                    <div class="row text-start">
+                        <div class="col mb-4">
+                            <label for="" class="form-label">Başlama Tarihi</label>
+                            {{ work_experience_form.start_date_we }}
+                        </div>
+                        <div class="mb-4 col">
+                            <label for="" class="form-label mobile-align-end-date">Bitiş Tarihi</label>
+                            {{ work_experience_form.end_date_we }}
+                        </div>
                     </div>
-                </div>
-                <div class="row text-start">
-                    <div class="col mb-4">
-                        <label for="" class="form-label">Başlama Tarihi</label>
-                        {{ work_experience_form.start_date_we }}
+                    <div class="row text-start">
+                        <div class="mb-4 col">
+                            <label for="" class="form-label">İl</label>
+                            {{ work_experience_form.city_we }}
+                        </div>
+                        <div class="mb-4 col">
+                            <label for="" class="form-label">İlçe</label>
+                            {{ work_experience_form.district_we }}
+                        </div>
                     </div>
-                    <div class="mb-4 col">
-                        <label for="" class="form-label mobile-align-end-date">Bitiş Tarihi</label>
-                        {{ work_experience_form.end_date_we }}
-                    </div>
-                </div>
-                <div class="row text-start">
-                    <div class="mb-4 col">
-                        <label for="" class="form-label">İl</label>
-                        {{ work_experience_form.city_we }}
-                    </div>
-                    <div class="mb-4 col">
-                        <label for="" class="form-label">İlçe</label>
-                        {{ work_experience_form.district_we }}
-                    </div>
-                </div>
-                <div class="form-floating mb-4">
-                    {{ work_experience_form.description_we }}
-                    <label class="ms-4" for="">Açıklama</label>
-                </div>
-            </div>
-        </div>
-
-        <p>
-            <button class="btn title-button mt-5" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseExample2"
-                    aria-expanded="false" aria-controls="collapseExample2">
-                Eğitim
-            </button>
-        </p>
-
-        <div class="collapse" id="collapseExample2">
-            <div class="card card-body form-body">
-                <div class="row text-start">
-                    <div class="col mb-4">
-                        <label for="" class="form-label">Üniversite Adı</label>
-                        {{ education_form.school_name }}
-                    </div>
-                    <div class="col mb-4">
-                        <label for="" class="form-label mobile-align-department">Bölüm</label>
-                        {{ education_form.department_name }}
-                    </div>
-                    <div class="col mb-4">
-                        <label for="" class="form-label mobile-align-degree">Derece</label>
-                        {{ education_form.degree_name }}
-                    </div>
-                </div>
-                <div class="row text-start">
-                    <div class="col mb-4">
-                        <label for="" class="form-label">Başlama Tarihi</label>
-                        {{ education_form.start_date_education }}
-                    </div>
-                    <div class="mb-4 col">
-                        <label for="" class="form-label mobile-align-end-date">Bitiş Tarihi</label>
-                        {{ education_form.end_date_education }}
-                    </div>
-                </div>
-                <div class="row text-start">
-                    <div class="mb-4 col">
-                        <label for="" class="form-label">İl</label>
-                        {{ education_form.city_education }}
-                    </div>
-                    <div class="mb-4 col">
-                        <label for="" class="form-label">İlçe</label>
-                        {{ education_form.district_education }}
-                    </div>
-                </div>
-                <div class="form-floating mb-4">
-                    {{ education_form.description_education }}
-                    <label class="ms-4" for="">Açıklama</label>
-                </div>
-            </div>
-        </div>
-
-        <p>
-            <button class="btn title-button mt-5" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseExample3"
-                    aria-expanded="false" aria-controls="collapseExample3">
-                Kurslar
-            </button>
-        </p>
-
-        <div class="collapse " id="collapseExample3">
-            <div class="card card-body form-body">
-                <div class="row text-start">
-                    <div class="col mb-4">
-                        <label for="" class="form-label mobile-align-course">Kurs Adı</label>
-                        {{ course_form.course_name }}
-                    </div>
-                    <div class="col mb-4">
-                        <label for="" class="form-label">Kurum Adı</label>
-                        {{ course_form.institution_name }}
-                    </div>
-                </div>
-                <div class="row text-start">
-                    <div class="col mb-4">
-                        <label for="" class="form-label">Başlama Tarihi</label>
-                        {{ course_form.start_date_course }}
-                    </div>
-                    <div class="mb-4 col">
-                        <label for="" class="form-label mobile-align-end-date">Bitiş Tarihi</label>
-                        {{ course_form.end_date_course }}
-                    </div>
-                </div>
-                <div class="form-floating mb-4">
-                    {{ course_form.description_course }}
-                    <label class="ms-4" for="">Açıklama</label>
-                </div>
-            </div>
-        </div>
-
-        <p>
-            <button class="btn title-button mt-5" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseExample4"
-                    aria-expanded="false" aria-controls="collapseExample4">
-                Referans
-            </button>
-        </p>
-
-        <div class="collapse" id="collapseExample4">
-            <div class="card card-body form-body">
-                <div class="row text-start">
-                    <div class="col mb-4">
-                        <label for="" class="form-label">Şirket Adı</label>
-                        {{ reference_form.company_name_reference }}
-                    </div>
-                    <div class="col mb-4">
-                        <label for="" class="form-label mobile-align-reference">İsim</label>
-                        {{ reference_form.first_name_reference }}
-                    </div>
-                    <div class="col mb-4">
-                        <label for="" class="form-label mobile-align-reference">Soyisim</label>
-                        {{ reference_form.last_name_reference }}
-                    </div>
-                </div>
-                <div class="row text-start">
-                    <div class="col mb-4">
-                        <label for="" class="form-label">Email</label>
-                        {{ reference_form.email_reference }}
-                    </div>
-                    <div class="mb-4 col">
-                        <label for="" class="form-label">Telefon</label>
-                        {{ reference_form.phone_number_reference }}
+                    <div class="form-floating mb-4">
+                        {{ work_experience_form.description_we }}
+                        <label class="ms-4" for="">Açıklama</label>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <button href="#" type="submit"
-                class="btn col-md-3 align-self-center submit-button mt-5">Kaydet ve CV indir
-        </button>
-    </form>
-</div>
+            <p>
+                <button class="btn title-button mt-5" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample2"
+                        aria-expanded="false" aria-controls="collapseExample2">
+                    Eğitim
+                </button>
+            </p>
+
+            <div class="collapse" id="collapseExample2">
+                <div class="card card-body form-body">
+                    <div class="row text-start">
+                        <div class="col mb-4">
+                            <label for="" class="form-label">Üniversite Adı</label>
+                            {{ education_form.school_name }}
+                        </div>
+                        <div class="col mb-4">
+                            <label for="" class="form-label mobile-align-department">Bölüm</label>
+                            {{ education_form.department_name }}
+                        </div>
+                        <div class="col mb-4">
+                            <label for="" class="form-label mobile-align-degree">Derece</label>
+                            {{ education_form.degree_name }}
+                        </div>
+                    </div>
+                    <div class="row text-start">
+                        <div class="col mb-4">
+                            <label for="" class="form-label">Başlama Tarihi</label>
+                            {{ education_form.start_date_education }}
+                        </div>
+                        <div class="mb-4 col">
+                            <label for="" class="form-label mobile-align-end-date">Bitiş Tarihi</label>
+                            {{ education_form.end_date_education }}
+                        </div>
+                    </div>
+                    <div class="row text-start">
+                        <div class="mb-4 col">
+                            <label for="" class="form-label">İl</label>
+                            {{ education_form.city_education }}
+                        </div>
+                        <div class="mb-4 col">
+                            <label for="" class="form-label">İlçe</label>
+                            {{ education_form.district_education }}
+                        </div>
+                    </div>
+                    <div class="form-floating mb-4">
+                        {{ education_form.description_education }}
+                        <label class="ms-4" for="">Açıklama</label>
+                    </div>
+                </div>
+            </div>
+
+            <p>
+                <button class="btn title-button mt-5" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample3"
+                        aria-expanded="false" aria-controls="collapseExample3">
+                    Kurslar
+                </button>
+            </p>
+
+            <div class="collapse " id="collapseExample3">
+                <div class="card card-body form-body">
+                    <div class="row text-start">
+                        <div class="col mb-4">
+                            <label for="" class="form-label mobile-align-course">Kurs Adı</label>
+                            {{ course_form.course_name }}
+                        </div>
+                        <div class="col mb-4">
+                            <label for="" class="form-label">Kurum Adı</label>
+                            {{ course_form.institution_name }}
+                        </div>
+                    </div>
+                    <div class="row text-start">
+                        <div class="col mb-4">
+                            <label for="" class="form-label">Başlama Tarihi</label>
+                            {{ course_form.start_date_course }}
+                        </div>
+                        <div class="mb-4 col">
+                            <label for="" class="form-label mobile-align-end-date">Bitiş Tarihi</label>
+                            {{ course_form.end_date_course }}
+                        </div>
+                    </div>
+                    <div class="form-floating mb-4">
+                        {{ course_form.description_course }}
+                        <label class="ms-4" for="">Açıklama</label>
+                    </div>
+                </div>
+            </div>
+
+            <p>
+                <button class="btn title-button mt-5" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample4"
+                        aria-expanded="false" aria-controls="collapseExample4">
+                    Referans
+                </button>
+            </p>
+
+            <div class="collapse" id="collapseExample4">
+                <div class="card card-body form-body">
+                    <div class="row text-start">
+                        <div class="col mb-4">
+                            <label for="" class="form-label">Şirket Adı</label>
+                            {{ reference_form.company_name_reference }}
+                        </div>
+                        <div class="col mb-4">
+                            <label for="" class="form-label mobile-align-reference">İsim</label>
+                            {{ reference_form.first_name_reference }}
+                        </div>
+                        <div class="col mb-4">
+                            <label for="" class="form-label mobile-align-reference">Soyisim</label>
+                            {{ reference_form.last_name_reference }}
+                        </div>
+                    </div>
+                    <div class="row text-start">
+                        <div class="col mb-4">
+                            <label for="" class="form-label">Email</label>
+                            {{ reference_form.email_reference }}
+                        </div>
+                        <div class="mb-4 col">
+                            <label for="" class="form-label">Telefon</label>
+                            {{ reference_form.phone_number_reference }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+{##}
+{#            <p>#}
+{#                <button class="btn title-button mt-5" type="button" data-bs-toggle="collapse"#}
+{#                        data-bs-target="#collapseExample5"#}
+{#                        aria-expanded="false" aria-controls="collapseExample5">#}
+{#                    Dil#}
+{#                </button>#}
+{#            </p>#}
+{##}
+{#            <div class="collapse" id="collapseExample5">#}
+{#                <div class="card card-body form-body">#}
+{#                    <input type="hidden" id="lang_id" value="{% url 'ajax_load_lang_levels' %}">#}
+{#                    <div class="row text-start">#}
+{#                        <div class="col mb-4">#}
+{#                            <label for="" class="form-label">Dil</label>#}
+{#                            {{ form.languages }}#}
+{#                        </div>#}
+{#                        <div class="col mb-4">#}
+{#                            <label for="" class="form-label">Level</label>#}
+{#                            {{ form.lang_levels }}#}
+{#                        </div>#}
+                        {#                        <div class="col mb-4">#}
+                        {#                            <label for="" class="form-label">level</label>#}
+                        {#                            <select name="" class="form-select" id="lang_levels_id">#}
+                        {#                                <option value="nonvalue">Lutfen dil seciniz</option>#}
+                        {#                            </select>#}
+                        {#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <p>#}
+{#                <button class="btn title-button mt-5" type="button" data-bs-toggle="collapse"#}
+{#                        data-bs-target="#collapseExample6"#}
+{#                        aria-expanded="false" aria-controls="collapseExample6">#}
+{#                    Beceri#}
+{#                </button>#}
+{#            </p>#}
+{##}
+{#            <div class="collapse" id="collapseExample6">#}
+{#                <div class="card card-body form-body">#}
+{#                    <input type="hidden" id="ability_id" value="{% url 'ajax_load_ability_levels' %}">#}
+{#                    <div class="row text-start">#}
+{#                        <div class="col mb-4">#}
+{#                            <label for="" class="form-label">Yetenek</label>#}
+{#                            {{ form.abilities }}#}
+{#                        </div>#}
+{#                        <div class="col mb-4">#}
+{#                            <label for="" class="form-label">Level</label>#}
+{#                            {{ form.abilitiy_levels }}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+
+            <a href="{% url 'user_pdf_view' user.user_form_id %}" type="submit"
+                    class="btn col-md-3 align-self-center submit-button mt-5">Kaydet
+            </a>
+        </form>
+    </div>
 {% endblock content %}
