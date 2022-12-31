@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from user_form.models import UserForm, City, District, Experience, WorkExperience, Education, Reference, Course
+from user_form.models import UserForm, City, District, Experience, WorkExperience, Education, Reference, Course,Language,LanguageLevel
 
 # Register your models here.
 
@@ -12,3 +12,6 @@ admin.site.register(WorkExperience)
 admin.site.register(Education)
 admin.site.register(Reference)
 admin.site.register(Course)
+admin.site.register(Language)
+admin.site.register(LanguageLevel)
+
