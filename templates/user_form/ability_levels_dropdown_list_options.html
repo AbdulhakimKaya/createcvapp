@@ -1,0 +1,4 @@
+<option value="">---------</option>
+{% for level in ability_levels %}
+<option value="{{ level.pk }}">{{ level.ability_name }}</option>
+{% endfor %}
