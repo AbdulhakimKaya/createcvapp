@@ -46,8 +46,8 @@ def create_user_form(request):
         form.data._mutable = False
 
         if form.is_valid:
-            form.save()
-            return redirect('user_pdf_view',form.id)
+            instance = form.save()
+            return redirect('user_pdf_view',instance.id)
 
     return render(request, "user_form/user_form.html", {'form': form, "work_experience_form":work_experience_form, "education_form": education_form,
                                               "reference_form": reference_form, "course_form": course_form})
