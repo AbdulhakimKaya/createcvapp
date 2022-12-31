@@ -1,0 +1,55 @@
+{% extends 'user_form/index.html' %}
+
+{% block content %}
+    <style>
+    </style>
+
+    <p style="color: dodgerblue; font-size: 14px">Kisisel Bilgiler</p>
+
+    <img src="{{ user.profile_img.path }}" style="height: 65px">
+    <p>{{ user.first_name }} {{ user.last_name }}</p>
+    <p>{{ user.birth_day }}</p>
+    <p>{{ user.city_living }} / {{ user.district_living }}</p>
+    <p>{{ user.gender }}</p>
+    <p>{{ user.marital_status }}</p>
+    <p>{{ user.military_status }}</p>
+    <p>{{ user.driving_license }}</p>
+    <p>{{ user.email }}</p>
+    <p>{{ user.phone_number }}</p>
+    <p>{{ user.address }}</p>
+    <p>{{ user.profile }}</p>
+    <p>{{ user.hobby }}</p>
+
+
+    <p style="color: dodgerblue; font-size: 14px">Is Deneyimi</p>
+
+    <p>{{ user.experience.work_experience.job_title_we }}</p>
+    <p>{{ user.experience.work_experience.company_name_we }}</p>
+    <p>{{ user.experience.work_experience.start_date_we }} - {{ user.experience.work_experience.end_date_we }}</p>
+    <p>{{ user.experience.work_experience.city_we }} / {{ user.experience.work_experience.district_we }}</p>
+
+
+    <p style="color: dodgerblue; font-size: 14px">Egitim</p>
+
+    <p>{{ user.experience.education.school_name }}</p>
+    <p>{{ user.experience.education.department_name }}</p>
+    <p>{{ user.experience.education.degree_name }}</p>
+    <p>{{ user.experience.education.start_date_education }} - {{ user.experience.education.end_date_education }}</p>
+    <p>{{ user.experience.education.city_education }} / {{ user.experience.education.district_education }}</p>
+
+
+    <p style="color: dodgerblue; font-size: 14px">Kurs</p>
+
+    <p>{{ user.experience.course.course_name }}</p>
+    <p>{{ user.experience.course.institution_name }}</p>
+    <p>{{ user.experience.course.start_date_course }} - {{ user.experience.course.end_date_course }}</p>
+
+
+    <p style="color: dodgerblue; font-size: 14px">Referans</p>
+
+    <p>{{ user.experience.reference.company_name_reference }}</p>
+    <p>{{ user.experience.reference.first_name_reference }} - {{ user.experience.reference.last_name_reference }}</p>
+    <p>{{ user.experience.reference.email_reference }}</p>
+    <p>{{ user.experience.reference.phone_number_reference }}</p>
+
+{% endblock content %}
